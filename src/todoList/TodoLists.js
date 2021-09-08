@@ -9,7 +9,7 @@ const TodoLists = () => {
         <React.StrictMode>
             <Header todos={todos} setTodos={setTodos}/>
             <br/>
-            <TodoList todos={todos}/>
+            <TodoList todos={todos} setTodos={setTodos}/>
         </React.StrictMode>
     )
 
