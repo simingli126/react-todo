@@ -4,9 +4,10 @@ import './index.css';
 import App1 from './customHooks/App1';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
+import TodoLists from "./todoList/TodoLists";
 ReactDOM.render(
   <React.StrictMode>
-    <App1 />
+    <TodoLists />
   </React.StrictMode>,
   document.getElementById('root')
 );
