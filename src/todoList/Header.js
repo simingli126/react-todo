@@ -6,7 +6,7 @@ const Header = ({todos, setTodos}) => {
     const [input, setInput] = useState('');
 
     const addTodo = () => {
-        const todoObj = {id: nanoid(), name: input, checked: false};
+        const todoObj = {id: nanoid(), name: input, checked: false, editing: false};
         const newTodos = [...todos, todoObj];
         setTodos(newTodos);
         setInput('')
