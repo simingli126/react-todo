@@ -1,7 +1,7 @@
 import React, {Component, useState} from "react";
 
 const TodoList = ({todos, setTodos}) => {
-
+    const [input, setInput] = useState('');
     const deleteTodo = (id) => {
         const newTodos = todos.filter(todo => id !== todo.id);
         setTodos(newTodos);
@@ -36,6 +36,26 @@ const TodoList = ({todos, setTodos}) => {
         </li>
 
     }
+
+    const cancelEdit = (id) => {
+        const newTodos = todos.map(todo => {
+            if (todo.id === id) {
+                return {...todo, editing: false}
+            }
+            return todo;
+        })
+        setTodos(newTodos);
+    }
+
+    const saveEdit = (id) => {
+        const newTodos = todos.map(todo => {
+            if (todo.id === id) {
+                return {...todo, name: input, checked: false, editing: false}
+            }
+            return todo;
+        })
+        setTodos(newTodos);
+    }
     const editTemplate = (todo) => {
 
         return <div>
@@ -43,9 +63,11 @@ const TodoList = ({todos, setTodos}) => {
                 <input
                     type="text"
                     placeholder={todo.name}
+                    onChange={event => setInput(event.target.value)}
+                    value={input}
                 />
-                <button>cancel</button>
-                <button>save</button>
+                <button onClick={()=> cancelEdit(todo.id)}>cancel</button>
+                <button onClick={() => saveEdit(todo.id)}>save</button>
             </li>
         </div>
     }
