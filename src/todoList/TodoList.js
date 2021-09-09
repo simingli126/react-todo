@@ -31,7 +31,9 @@ const TodoList = ({todos, setTodos}) => {
             style={todo.checked === true ? {textDecoration: "line-through"} : {textDecoration: "none"}}>
             <input type="checkbox" onChange={() => changeTodoStatus(todo.id)}/>
             {todo.name}
-            <button onClick={() => editTodo(todo.id)}>edit</button>
+            <button
+                disabled={todo.checked}
+                onClick={() => editTodo(todo.id)}>edit</button>
             <button onClick={() => deleteTodo(todo.id)}>delete</button>
         </li>
 
@@ -45,6 +47,7 @@ const TodoList = ({todos, setTodos}) => {
             return todo;
         })
         setTodos(newTodos);
+        setInput('');
     }
 
     const saveEdit = (id) => {
