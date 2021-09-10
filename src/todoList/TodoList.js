@@ -1,4 +1,5 @@
 import React, {Component, useState} from "react";
+import {Input} from "antd"
 
 const TodoList = ({todos, setTodos}) => {
     const [input, setInput] = useState('');
@@ -28,12 +29,13 @@ const TodoList = ({todos, setTodos}) => {
 
     const addTemplate = (todo) => {
         return <li key={todo.id}
-            style={todo.checked === true ? {textDecoration: "line-through"} : {textDecoration: "none"}}>
+                   style={todo.checked === true ? {textDecoration: "line-through"} : {textDecoration: "none"}}>
             <input type="checkbox" onChange={() => changeTodoStatus(todo.id)}/>
             {todo.name}
             <button
                 disabled={todo.checked}
-                onClick={() => editTodo(todo.id)}>edit</button>
+                onClick={() => editTodo(todo.id)}>edit
+            </button>
             <button onClick={() => deleteTodo(todo.id)}>delete</button>
         </li>
 
@@ -63,13 +65,13 @@ const TodoList = ({todos, setTodos}) => {
 
         return <div>
             <li key={todo.id}>
-                <input
+                <Input
                     type="text"
                     placeholder={todo.name}
                     onChange={event => setInput(event.target.value)}
-                    value={input}
+                    onPressEnter={() => saveEdit(todo.id)}
                 />
-                <button onClick={()=> cancelEdit(todo.id)}>cancel</button>
+                <button onClick={() => cancelEdit(todo.id)}>cancel</button>
                 <button onClick={() => saveEdit(todo.id)}>save</button>
             </li>
         </div>

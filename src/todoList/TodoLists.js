@@ -6,11 +6,11 @@ import {Button} from "antd";
 const TodoLists = () => {
     const [todos, setTodos] = useState([]);
     return (
-        <React.StrictMode>
+        <div align="center">
             <Header todos={todos} setTodos={setTodos}/>
             <br/>
             <TodoList todos={todos} setTodos={setTodos}/>
-        </React.StrictMode>
+        </div>
     )
 
 }
