@@ -77,11 +77,18 @@ const TodoList = ({todos, setTodos}) => {
         </div>
     }
     return (
-        todos.map((todo) => {
-            return <div>
-                {todo.editing === false ? addTemplate(todo) : editTemplate(todo)}
-            </div>
-        })
+        <div>
+            {todos.map((todo) => {
+                return <div>
+                    {todo.editing === false ? addTemplate(todo) : editTemplate(todo)}
+                </div>
+            })}
+            <button>Finished</button>
+            <button>Unfinished</button>
+            <button>All</button>
+            <button>Toggle All</button>
+        </div>
+
     )
 }
 
